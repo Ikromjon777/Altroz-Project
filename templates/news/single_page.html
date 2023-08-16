@@ -1,0 +1,196 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+{% block title %} :: Altroz - News Magazine HTML Template :: {% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <!-- Page Title Start -->
+  <div class="page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li>{{news.category}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page title end -->
+  
+  <!-- 1rd Block Wrapper Start -->
+  <section class="utf_block_wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="single-post">
+            <div class="utf_post_title-area"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+              <h2 class="utf_post_title">{{news.title}}</h2>
+                <div class="utf_post_meta"> <span class="utf_post_author"> By <a href="#!">{{news.author}}</a> </span> <span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span><span class="post-hits"><i class="fa fa-eye"></i>{% get_hit_count for news %}</span> <span class="post-comment"><i class="fa fa-comments-o"></i> <a href="#!" style="cursor: context-menu;" class="comments-link"><span>{{comments.count}}</span></a></span>   </div>
+              </div>
+            <div class="utf_post_content-area">
+              <div class="post-media post-featured-image"> <a href="{{news.image.url}}" class="gallery-popup"><img src="{{news.image.url}}" class="img-fluid" alt=""></a> </div>
+              <div class="entry-content">
+                <p>{{news.body | safe }}</p>
+              </div>
+
+
+              
+              <div class="share-items clearfix">
+                <ul class="post-social-icons unstyled">
+                  <li class="facebook"> <a href="https://www.facebook.com/"> <i class="fa fa-facebook"></i> <span class="ts-social-title">Facebook</span></a> </li>
+                  <li class="twitter"> <a href="https://www.twitter.com/"> <i class="fa fa-twitter"></i> <span class="ts-social-title">Twitter</span></a> </li>
+                  <li class="gplus"> <a href="https://vlogg.com/"> <i class="fa fa-google-plus"></i> <span class="ts-social-title">Google +</span></a> </li>
+                  <li class="pinterest"> <a href="https://pinterest.com/"> <i class="fa fa-pinterest"></i> <span class="ts-social-title">Pinterest</span></a> </li>
+                </ul>
+              </div>              
+            </div>
+          </div>
+
+          
+          <div class="related-posts block">
+            <h3 class="utf_block_title"><span>O'xshash yangiliklar</span></h3>
+            <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
+              {% for news in newss %}
+              <div class="item">
+                <div class="utf_post_block_style clearfix">
+                  <div class="utf_post_thumb"> <a href="{{ news.get_absolute_url }}"><img class="img-fluid" src="{{news.image.url}}" alt="" /></a> </div>
+                  <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                  <div class="utf_post_content">
+                    <h2 class="utf_post_title title-medium"> <a href="#">{{news.title|truncatechars:45}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>            
+          </div>
+          
+          <!-- Post comment start -->
+          <div id="comments" class="comments-area block">
+            <h3 class="utf_block_title"><span>{{comments.count}} Comments</span></h3>
+            <ul class="comments-list">
+              <li>
+                {% for comment in comments %}
+                <div class="comment"> <img class="comment-avatar pull-left" alt="" src="{% static 'images/person.jpg' %}">
+                  <div class="comment-body">
+                    <div class="meta-data"> <span class="comment-author">{{comment.name}}</span> <span class="comment-date pull-right">{{comment.created_time}}</span> </div>
+                    <div class="comment-content">
+                      <p>{{comment.text|safe}}</p>
+                    </div>
+                    <div class="text-left"> <a class="comment-reply" href="#!"><i class="fa fa-share"></i> Reply</a> </div>
+                  </div>
+                </div>
+                {% endfor %}
+<!--                <ul class="comments-reply">-->
+<!--                  <li>-->
+<!--                    <div class="comment"> <img class="comment-avatar pull-left" alt="" src="{% static 'images/news/user2.png' %}">-->
+<!--                      <div class="comment-body">-->
+<!--                        <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2022</span> </div>-->
+<!--						<div class="comment-content">-->
+<!--						  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries, but also the leap into electronic type setting, remaining essentially unchanged.</p>-->
+<!--						</div>-->
+<!--						<div class="text-left"> <a class="comment-reply" href="#"><i class="fa fa-share"></i> Reply</a> </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </li>-->
+<!--                </ul>-->
+<!--                <div class="comment last"> <img class="comment-avatar pull-left" alt="" src="{% static 'images/news/user1.png' %}">-->
+<!--                  <div class="comment-body">-->
+<!--                    <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2022</span> </div>-->
+<!--                    <div class="comment-content">-->
+<!--                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries, but also the leap into electronic type setting, remaining essentially unchanged.</p>-->
+<!--                    </div>-->
+<!--                    <div class="text-left"> <a class="comment-reply" href="#"><i class="fa fa-share"></i> Reply</a> </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+              </li>
+            </ul>
+          </div>
+          <!-- Post comment end -->
+          
+		  <!-- Comments Form Start -->
+          <div class="comments-form">
+            <h3 class="title-normal">Izoh qoldirish</h3>
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                  {{ form.media }}
+                  {{ form|crispy }}
+              <div class="clearfix">
+                <button class="comments-btn btn btn-primary" type="submit">Izoh qoldirish</button>
+              </div>
+            </form>
+          </div>
+          <!-- Comments form end -->           
+        </div>
+        
+        <div class="col-lg-4 col-md-12">
+          <div class="sidebar utf_sidebar_right">
+            <div class="widget">
+              <h3 class="utf_block_title"><span>Biz bilan bo'ling</span></h3>
+              <ul class="social-icon">
+                <li><a href="https://rss.com/" target="_blank"><i class="fa fa-rss"></i></a></li>
+                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://vlogg.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="https://vimeo.com/" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+            </div>
+            
+            <div class="widget color-default">
+              <h3 class="utf_block_title"><span>So'ngi yangiliklar</span></h3>
+              <div class="utf_list_post_block">
+                <ul class="utf_list_post">
+                  {% for news in sungi_yangiliklar2 %}
+                  <li class="clearfix">
+                    <div class="utf_post_block_style post-float clearfix">
+                      <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category|truncatewords_html:1}}</a> </div>
+                      <div class="utf_post_content">
+                        <h2 class="utf_post_title title-small"> <a href="{{news.get_absolute_url}}">{{news.title|truncatewords_html:8}}</a> </h2>
+                        <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!  ">{{news.author}}</a></span> <span class="utf_post_date" style="margin: -8px;"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            
+            <div class="widget text-center"> <img class="banner img-fluid" src="{% static 'images/banner-ads/ad-sidebar.png' %}" alt="" /> </div>
+
+            <div class="widget widget-tags">
+              <h3 class="utf_block_title"><span>Ommabop taglar</span></h3>
+              <ul class="unstyled clearfix">
+                {% for cat in categories_news %}
+                <li><a href="#!" style="cursor: context-menu;">{{cat.category__name}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+            <div class="widget m-bottom-0">
+              <h3 class="utf_block_title"><span>Newsletter</span></h3>
+              <div class="utf_newsletter_block">
+                <div class="utf_newsletter_introtext">
+				  <h4>Subscribe Newsletter!</h4>
+                  <p>Lorem ipsum dolor sit consectetur adipiscing elit Maecenas in pulvinar neque Nulla finibus lobortis pulvinar.</p>
+                </div>
+                <div class="utf_newsletter_form">
+                  <form action="#" method="post">
+                    <div class="form-group">
+                      <input type="email" name="email" id="utf_newsletter_form-email" class="form-control form-control-lg" placeholder="E-Mail Address" autocomplete="off">
+                      <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>            
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+<!-- 1rd Block Wrapper End -->
+
+{% endblock content %}

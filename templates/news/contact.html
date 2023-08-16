@@ -1,0 +1,70 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} :: Altroz - News Magazine HTML Template :: {% endblock title %}
+
+{% block content %}
+  
+  <!-- Page Title Start -->
+  <div class="page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page title end -->
+  
+  <!-- 1rd Block Wrapper Start -->
+  <section class="utf_block_wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 contact_area">
+          <h3>Biz bilan aloqa</h3>
+          <form method="post">{% csrf_token %}
+            {{ form.media}}
+            {{ form|crispy }}
+            <div class="form-group">
+              <button class="btn btn-primary solid blank" type="submit">Xabarni yuborish</button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="col-lg-4 col-md-12 contact_detail_area">
+          <div class="sidebar utf_sidebar_right">
+            <div class="widget">
+                <h3 class="utf_block_title"><span>Office Address</span></h3>
+                <ul class="contct_detail_list">
+				  <li><i class="fa fa-home"></i>Lorem ipsum dolor sit amet, consecte adipiscing elit Maecenas in pulvinar neque Nulla finibus lobortis.</li>
+				  <li><i class="fa fa-phone"></i> <a href="#">(+12) 34567 890 123</a></li>
+				  <li><i class="fa fa-envelope-o"></i> <a href="#">mail@example.com</a></li>
+				  <li><i class="fa fa-info-circle"></i> <a href="#">www.yourdomain.com</a></li>	
+				</ul>
+            </div>
+			
+            <div class="widget">
+              <h3 class="utf_block_title"><span>Biz bilan bo'ling</span></h3>
+              <ul class="social-icon">
+                <li><a href="https://rss.com/" target="_blank"><i class="fa fa-rss"></i></a></li>
+                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://vlogg.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="https://vimeo.com/" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+<!-- 1rd Block Wrapper End -->
+  
+
+{% endblock content %}

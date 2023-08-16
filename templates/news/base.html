@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">
+<meta name="theme-color" content="#ec0000">
+<meta name="description" content="News Magazine HTML Template">
+<meta name="keywords" content="Article, Blog, Business, Fashion, Magazine, Music, News, News Magazine, Newspaper, Politics, Travel">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} :: Altroz - News Magazine HTML Template :: {% endblock title %}</title>
+<!--Favicon-->
+<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.default.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/colorbox.css' %}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,500,600,700,800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,800&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Start Pre Loader -->
+<div id="preloader">
+  <div id="ctn-preloader" class="ctn-preloader">
+    <div class="animation-preloader">
+      <div class="spinner"></div>
+      <div class="txt-loading">
+          <span data-text-preloader="A" class="letters-loading">A</span>
+          <span data-text-preloader="L" class="letters-loading">L</span>
+          <span data-text-preloader="T" class="letters-loading">T</span>
+          <span data-text-preloader="R" class="letters-loading">R</span>
+          <span data-text-preloader="O" class="letters-loading">O</span>
+		  <span data-text-preloader="Z" class="letters-loading">Z</span>
+		  <span data-text-preloader="&nbsp;" class="letters-loading">&nbsp;</span>
+          <span data-text-preloader="N" class="letters-loading">N</span>
+          <span data-text-preloader="E" class="letters-loading">E</span>
+		  <span data-text-preloader="W" class="letters-loading">W</span>
+		  <span data-text-preloader="S" class="letters-loading">S</span>
+      </div>
+    </div>
+    <div class="loader">
+      <div class="row">
+        <div class="col-3 loader-section section-left">
+          <div class="bg"></div>
+        </div>
+        <div class="col-3 loader-section section-left">
+          <div class="bg"></div>
+        </div>
+        <div class="col-3 loader-section section-right">
+          <div class="bg"></div>
+        </div>
+        <div class="col-3 loader-section section-right">
+          <div class="bg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Pre Loader -->
+
+<div class="body-inner">
+  <!-- Topbar Start -->
+  <div id="top-bar" class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="unstyled top-nav">
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'profile_page' %}">{{request.user.username}}</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a> <a href="{% url 'signup' %}">Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-4 top-social text-lg-right text-md-center">
+          <ul class="unstyled">
+            <li> <a title="Facebook" href="http://facebook.com" target="_blank"> <span class="social-icon"><i class="fa fa-facebook"></i></span> </a> <a title="Twitter" href="http://twitter.com" target="_blank"> <span class="social-icon"><i class="fa fa-twitter"></i></span> </a> <a title="Google+" href="http://plus.google.com" target="_blank"> <span class="social-icon"><i class="fa fa-google-plus"></i></span> </a> <a title="Linkdin" href="http://linkedin.com" target="_blank"> <span class="social-icon"><i class="fa fa-linkedin"></i></span> </a> <a title="Rss" href="http://rss.com" target="_blank"> <span class="social-icon"><i class="fa fa-rss"></i></span> </a> <a title="Skype" href="http://skype.com" target="_blank"> <span class="social-icon"><i class="fa fa-skype"></i></span> </a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+
+  <!-- Header start -->
+  <header id="header" class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12">
+          <div class="logo"> <a href="{% url 'home' %}"> <img src="{% static 'images/logo.png' %}" alt=""> </a> </div>
+        </div>
+        <div class="col-md-9 col-sm-12 header-right">
+          <div class="ad-banner float-right"> <a href="#"><img src="{% static 'images/banner-ads/ad-top-header.png' %}" class="img-fluid" alt=""></a> </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- Main Nav Start -->
+  <div class="utf_main_nav_area clearfix utf_sticky">
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg col">
+          <div class="utf_site_nav_inner float-left">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"> <a href="{% url 'home' %}">Home</a>
+
+                </li>
+                <li class="nav-item dropdown utf_mega_dropdown"> <a href="Lifestyle" class="nav-link dropdown-toggle" data-toggle="dropdown"
+       								role="button" aria-haspopup="true" aria-expanded="false">Layfstayl <i class="fa fa-angle-down"></i></a>
+                  <div class="utf_dropdown_menu utf_mega_menu_content clearfix">
+                    <div class="menu-tab">
+                      <div class="row">
+                        <ul class="nav nav-tabs flex-column col-2" data-toggle="tab-hover">
+                          <li class="nav-item"> <a class="animated fadeIn active" href="#tab-one" data-toggle="tab"> <span class="tab-head"> <span class="tab-text-title"><i class="fa fa-angle-double-right"></i> Salomatlik</span> </span> </a> </li>
+                          <li class="nav-item"> <a class="animated fadeIn" href="#tab-two" data-toggle="tab"> <span class="tab-head"> <span class="tab-text-title"><i class="fa fa-angle-double-right"></i>Sayohat</span> </span> </a> </li>
+                          <li class="nav-item"> <a class="animated fadeIn" href="#tab-three" data-toggle="tab"> <span class="tab-head"> <span class="tab-text-title"><i class="fa fa-angle-double-right"></i>Ovqat</span> </span> </a> </li>
+                        </ul>
+                        <div class="tab-content col-10">
+                          <div class="tab-pane fade show active" id="tab-one">
+                            <div class="row">
+                              {% for news in salomatlik_list %}
+                              <div class="col-md-3">
+                                <div class="utf_post_block_style clearfix">
+                                  <div class="utf_post_thumb"> <a href="#"><img class="img-fluid" style="height: 150px"  src="{{ news.image.url }}" alt="" /></a> </div>
+                                  <a class="utf_post_cat" href="{% url 'salomatlik_page' %}">{{news.category}}</a>
+                                  <div class="utf_post_content">
+                                    <h2 class="utf_post_title title-small"> <a href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a> </h2>
+                                  </div>
+                                </div>
+                              </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+
+                          <div class="tab-pane animated fadeIn" id="tab-two">
+                            <div class="row">
+                              {% for news in sayohat_list %}
+                              <div class="col-md-3">
+                                <div class="utf_post_block_style clearfix">
+                                  <div class="utf_post_thumb"> <a href="#"><img class="img-fluid" style="height: 150px"  src="{{ news.image.url }}" alt="" /></a> </div>
+                                  <a class="utf_post_cat" href="{% url 'sayohat_page' %}">{{news.category}}</a>
+                                  <div class="utf_post_content">
+                                    <h2 class="utf_post_title title-small"> <a href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a> </h2>
+                                  </div>
+                                </div>
+                              </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+                          <div class="tab-pane animated fadeIn" id="tab-three">
+                            <div class="row">
+                           {% for news in ovqat_list %}
+                              <div class="col-md-3">
+                                <div class="utf_post_block_style clearfix">
+                                  <div class="utf_post_thumb"> <a href="#"><img class="img-fluid" src="{{ news.image.url }}" alt="" style="height: 150px" /></a> </div>
+                                  <a class="utf_post_cat" href="{% url 'ovqat_page' %}">{{news.category}}</a>
+                                  <div class="utf_post_content">
+                                    <h2 class="utf_post_title title-small"> <a href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a> </h2>
+                                  </div>
+                                </div>
+                              </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li> <a href="{% url 'mahalliy_page' %}">Mahalliy</a> </li>
+                <li> <a href="{% url 'jahon_page' %}">Jahon</a> </li>
+                <li> <a href="{% url 'madaniyat_page' %}">Madaniyat</a> </li>
+                <li> <a href="{% url 'iqtisodiyot_page' %}">Iqtisodiyot</a> </li>
+                <li> <a href="{% url 'sport_page' %}">Sport</a> </li>
+				<li> <a href="{% url 'about' %}">Biz haqimizda</a> </li>
+                  <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
+                  <li><a href="{% url '404_page' %}">404</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="utf_nav_search"> <span id="search"><i class="fa fa-search"></i></span> </div>
+        <div class="utf_search_block" style="display: none;">
+          <form method="get" class="form-inline" action="{% url 'search' %}">
+          <input type="search" class="form-control" placeholder="Enter your keywords..." name="q">
+          <span class="utf_search_close">&times;</span>
+          </form>
+		</div>
+
+      </div>
+    </div>
+  </div>
+    {% if messages %}
+    <div class="col-lg-11 col-md-12 col-sm-12" style="margin-left: 52px;margin-top: -12px; margin-bottom: -5px">
+    <div class="mt-4">
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+</div>{% endif %}
+    {% block content %}
+
+    {% endblock content %}
+    <footer id="footer" class="footer">
+    <div class="utf_footer_main">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget contact-widget">
+            <h3 class="widget-title">Biz haqimizda</h3>
+            <ul>
+              <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text since has five...</li>
+              <li><i class="fa fa-home"></i> 15 Cliff St, New York NY 10038, USA</li>
+			  <li><i class="fa fa-phone"></i> <a href="#">+91 234 567 8765</a></li>
+			  <li><i class="fa fa-envelope-o"></i> <a href="#">mail@example.com</a></li>
+            </ul>
+			<ul class="unstyled utf_footer_social">
+				<li><a title="Facebook" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+				<li><a title="Twitter" href="https://www.twiiter.com/"><i class="fa fa-twitter"></i></a></li>
+				<li><a title="Google+" href="https://vlogg.com/"><i class="fa fa-google-plus"></i></a></li>
+				<li><a title="Linkdin" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+				<li><a title="Skype" href="https://www.skype.com/"><i class="fa fa-skype"></i></a></li>
+				<li><a title="Skype" href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
+		    </ul>
+          </div>
+
+          <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget widget-categories">
+            <h3 class="widget-title">Ommabop kategoriyalar</h3>
+            <ul>
+              {% for cat in categories_news %}
+              <li><i class="fa fa-angle-double-right"></i><a href="#!" style="cursor: context-menu;"s><span class="catTitle">{{cat.category__name}}</span><span class="catCounter">({{cat.new_item_count}})</span></a> </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+		  <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget">
+            <h3 class="widget-title">Ommabop yangiliklar</h3>
+            <div class="utf_list_post_block">
+              <ul class="utf_list_post">
+                {% for news in ommabop_yangiliklar %}
+                <li class="clearfix">
+                  <div class="utf_post_block_style post-float clearfix">
+                    <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content">
+                      <h2 class="utf_post_title title-small"> <a href="{{news.get_absolute_url}}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</footer>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 text-center">
+          <div class="utf_copyright_info"> <span>Copyright © 2023 All Rights Reserved.</span> </div>
+        </div>
+      </div>
+      <div id="back-to-top" class="back-to-top">
+        <button class="btn btn-primary" title="Back to Top"> <i class="fa fa-angle-up"></i> </button>
+      </div>
+    </div>
+</div>
+<!-- Copyright End -->
+</div>
+
+<!-- Javascript Files -->
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.colorbox.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/custom_script.js' %}"></script>
+</body>
+</html
+

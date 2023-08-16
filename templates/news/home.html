@@ -1,0 +1,579 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+{% block title %} :: Altroz - News Magazine :: {% endblock title %}
+
+{% block content %}
+  <!-- Featured Post Area Start --> 
+  <section class="utf_featured_post_area  no-padding">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-12 pad-r">
+          <div id="utf_featured_slider" class="owl-carousel owl-theme utf_featured_slider">
+            {% for news in yangiliklar %}
+            <div class="item" style="background-image:url({{news.image.url}})">
+              <div class="utf_featured_post">
+                <div class="utf_post_content"> <a class="utf_post_cat " href="#!"  style="cursor: context-menu;">{{news.category}}</a>
+                  <h2 class="utf_post_title title-extra-large"> <a href="{{ news.get_absolute_url }}">{{news.title}}</a> </h2>
+                  <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span>
+				  <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span>
+				</div>
+              </div>              
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+        
+        <div class="col-lg-5 col-md-12 pad-l">
+          <div class="row">
+            {% for news in yangiliklar1 %}
+            <div class="col-md-12">
+              <div class="utf_post_overaly_style contentTop hot-post-top clearfix">
+                <div class="utf_post_thumb"> <a href="#!"><img class="img-fluid" src="{{news.image.url}}" alt="" /></a> </div>
+                <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;" >{{news.category}}</a>
+                  <h2 class="utf_post_title title-large"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:15}}</a> </h2>
+                  <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span>
+				  <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span>
+				</div>
+              </div>
+            </div>
+            {% endfor %}
+            {% for news in yangiliklar2 %}
+            <div class="col-md-6 pad-r-small">
+              <div class="utf_post_overaly_style contentTop utf_hot_post_bottom clearfix">
+                <div class="utf_post_thumb"> <a href="#!"><img class="img-fluid" src="{{news.image.url}}" alt="" /></a> </div>
+                <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                  <h2 class="utf_post_title title-medium"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7}}</a> </h2>
+				  <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span></div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% for news in yangiliklar3 %}
+            <div class="col-md-6 pad-r-small" style="padding: 1px; margin: 0px;">
+              <div class="utf_post_overaly_style contentTop utf_hot_post_bottom clearfix" style="width: 95%">
+                <div class="utf_post_thumb"> <a href="#!"><img class="img-fluid" src="{{news.image.url}}" alt="" /></a> </div>
+                <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                  <h2 class="utf_post_title title-medium"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:5}}</a> </h2>
+				  <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span></div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+  <!-- Featured Post Area End --> 
+  
+  <!-- Latest News Area Start --> 
+  <section class="utf_latest_new_area pb-bottom-20">
+   <div class="container">
+	<div class="utf_latest_news block color-red">
+	  <h3 class="utf_block_title"><span>So'ngi yangiliklar</span></h3>
+		<div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
+          {% for news in sungi_yangiliklar %}
+		  <div class="item">
+			<ul class="utf_list_post">
+			  <li class="clearfix">
+				<div class="utf_post_block_style clearfix">
+				  <div class="utf_post_thumb"> <a href="#!"><img class="img-fluid" style="height: 180px"  src="{{news.image.url}}" alt="" /></a> </div>
+				  <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+				  <div class="utf_post_content">
+					<h2 class="utf_post_title title-medium"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatechars:60}}</a> </h2>
+					<div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span> </div>
+				  </div>
+				</div>
+			  </li>
+			</ul>
+		  </div>
+       {% endfor %}
+
+		</div>
+	  </div>
+	</div>
+  </section>
+  <!-- Latest News Area End -->
+  <!-- Ad Content Area Start -->
+  <div class="utf_ad_content_area text-center utf_banner_area no-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"> <img class="img-fluid" src="{% static 'images/banner-ads/ad-content-one.jpg' %}" alt="" /> </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ad Content Area End -->
+  
+  <!-- 1rd Block Wrapper Start -->
+  <section class="utf_block_wrapper p-bottom-0">
+    <div class="container">
+      <div class="row">		
+        <div class="col-lg-8 col-md-12">
+          <div class="utf_featured_tab color-blue">
+            <h3 class="utf_block_title"><span>Mahalliy yangiliklar</span></h3>
+            <ul class="nav nav-tabs">
+              <li class="nav-item"> <a class="nav-link animated fadeIn active" href="#tab_a" data-toggle="tab"> <span class="tab-head"> <span class="tab-text-title">Mahalliy</span> </span> </a> </li>
+              <li class="nav-item"> <a class="nav-link animated fadeIn" href="#tab_b" data-toggle="tab"> <span class="tab-head"> <span class="tab-text-title">Jamiyat</span> </span> </a> </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active animated fadeInRight" id="tab_a">
+                <div class="row" style="margin-bottom: 7px">
+                  {% for news in mahalliy1 %}
+                  <div class="col-lg-6 col-md-6">
+                    <div class="utf_post_block_style clearfix">
+                      <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px"  src="{{news.image.url}}" alt="" /> </a> </div>
+                      <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                      <div class="utf_post_content">
+                        <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title}}</a> </h2>
+                        <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                        <p>{{news.body|truncatewords_html:30|safe}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <div class="col-lg-6 col-md-6">
+                    <div class="utf_list_post_block">
+                      <ul class="utf_list_post">
+                        {% for news in mahalliy_yangiliklar %}
+                        <li class="clearfix">
+                          <div class="utf_post_block_style post-float clearfix">
+                            <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                            <div class="utf_post_content">
+                              <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}}</a> </h2>
+                              <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                            </div>
+                          </div>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <a href="{% url 'mahalliy_page' %}" style="margin-left: 605px; margin-bottom: 0px; margin-top: 10px; padding-top: 50px;"> Ko'proq ko'rsatish --></a>
+
+              </div>
+
+              <div class="tab-pane animated fadeInLeft" id="tab_b">
+                <div class="row" style="margin-bottom: 7px">
+                  {% for news in jamiyat1 %}
+                  <div class="col-lg-6 col-md-6">
+                    <div class="utf_post_block_style clearfix">
+                      <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px"  src="{{news.image.url}}" alt="" /> </a> </div>
+                      <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                      <div class="utf_post_content">
+                        <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title}}</a> </h2>
+                        <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                        <p>{{news.body|truncatewords_html:30|safe}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  
+                  <div class="col-lg-6 col-md-6">
+                    <div class="utf_list_post_block">
+                      <ul class="utf_list_post">
+                        {% for news in jamiyat_yangiliklar %}
+                        <li class="clearfix">
+                          <div class="utf_post_block_style post-float clearfix">
+                            <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                            <div class="utf_post_content">
+                              <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}}</a> </h2>
+                              <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                            </div>
+                          </div>
+                        </li>
+                        {% endfor %}
+                      </ul>                      
+                    </div>
+                  </div>
+                </div>
+                <a href="{% url 'jamiyat_page' %}" style="margin-left: 605px; margin-bottom: 0px; margin-top: 10px; padding-top: 50px"> Ko'proq ko'rsatish --></a>
+
+              </div>
+            </div>
+          </div>
+          
+          <div class="gap-30"></div>
+          <div class="block color-orange" style="margin-top: -20px">
+            <h3 class="utf_block_title"><span>Jahon yangiliklari</span></h3>
+            <div class="row" style="margin-bottom: 7px">
+              <div class="col-lg-6 col-md-6">
+                {% for news in jahon1 %}
+                <div class="utf_post_overaly_style clearfix">
+                  <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px" src="{{news.image.url}}" alt="" /> </a> </div>
+                  <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                    <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                  </div>
+                </div>
+                {% endfor %}
+                <div class="utf_list_post_block">
+                  <ul class="utf_list_post">
+                    {% for news in jahon_yangiliklari1 %}
+                    <li class="clearfix">
+                      <div class="utf_post_block_style post-float clearfix">
+                        <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                        <div class="utf_post_content">
+                          <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}} </a> </h2>
+                          <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                        </div>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-lg-6 col-md-6">
+                {% for news in jahon2 %}
+                <div class="utf_post_overaly_style last clearfix">
+                  <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px" src="{{news.image.url}}" alt="" /> </a> </div>
+                  <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                    <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                  </div>
+                </div>
+              {% endfor %}
+                <div class="utf_list_post_block">
+                  <ul class="utf_list_post">
+                    {% for news in jahon_yangiliklari2 %}
+                    <li class="clearfix">
+                      <div class="utf_post_block_style post-float clearfix">
+                        <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a></div>
+                        <div class="utf_post_content">
+                          <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}}</a> </h2>
+                          <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                        </div>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'jahon_page' %}" style="margin-left: 605px;margin-top: 10px; padding-top: 50px;"> Ko'proq ko'rsatish --></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-12">
+          <div class="sidebar utf_sidebar_right">
+            <div class="widget">
+              <h3 class="utf_block_title"><span>Biz bilan bo'ling</span></h3>
+              <ul class="social-icon">
+                <li><a href="https://rss.com/" target="_blank"><i class="fa fa-rss"></i></a></li>
+                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://vlogg.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="https://vimeo.com/" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+            </div>
+            
+            <div class="widget color-default">
+              <h3 class="utf_block_title"><span>Muharrir tanlovi</span></h3>
+              {% for news in muharrir_tanlovi1 %}
+              <div class="utf_post_overaly_style clearfix">
+                <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px"  src="{{news.image.url}}" alt="" /> </a> </div>
+                <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                  <h2 class="utf_post_title"> <a href="{{news.get_absolute_url}}">{{news.title|truncatewords_html:8}}</a> </h2>
+                  <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                </div>
+              </div>
+              {% endfor %}
+              <div class="utf_list_post_block" style="margin-bottom: 10px">
+                <ul class="utf_list_post">
+                  {% for news in muharrir_tanlovi2 %}
+                  <li class="clearfix">
+                    <div class="utf_post_block_style post-float clearfix">
+                      <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a></div>
+                      <div class="utf_post_content">
+                        <h2 class="utf_post_title title-small"> <a href="{{news.get_absolute_url}}">{{news.title|truncatewords_html:8}}</a> </h2>
+                        <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user" style=""></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: -8px;"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span></div>
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+
+                </ul>
+              </div>
+              <a href="{% url 'muharrir_page' %}" style="margin-left: 210px;"> Ko'proq ko'rsatish --></a>
+
+            </div>
+            
+            <div class="widget color-default m-bottom-0" style="margin-top: -20px">
+              <h3 class="utf_block_title"><span>Layfstayl</span></h3>
+              <div id="utf_post_slide" class="owl-carousel owl-theme utf_post_slide">
+                {% for news in ovqat %}
+                <div class="item">
+                  <div class="utf_post_overaly_style text-center clearfix">
+                    <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px"  src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                      <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                {% for news in salomatlik %}
+                <div class="item">
+                  <div class="utf_post_overaly_style text-center clearfix">
+                    <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                      <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                {% for news in sayohat %}
+                <div class="item">
+                  <div class="utf_post_overaly_style text-center clearfix">
+                    <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content"> <a class="utf_post_cat" href="#!" style="cursor: context-menu;">{{news.category}}</a>
+                      <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span><span class="utf_post_date" ><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span></div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 1rd Block Wrapper End -->
+  
+  <!-- 2rd Block Wrapper Start -->
+  <section class="utf_block_wrapper p-bottom-0" >
+    <div class="container" style="margin-top: -30px">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="block color-dark-blue">
+            <h3 class="utf_block_title"><span>Iqtisodiyot</span></h3>
+            {% for news in iqtisodiyot %}
+            <div class="utf_post_overaly_style clearfix">
+              <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px"  src="{{news.image.url}}" alt="" /> </a> </div>
+              <div class="utf_post_content">
+                <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> 25 Jan, 2022</span> </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="utf_list_post_block" style="margin-bottom: 10px">
+              <ul class="utf_list_post">
+                {% for news in iqtisodiyot_yangiliklar %}
+                <li class="clearfix">
+                  <div class="utf_post_block_style post-float clearfix">
+                    <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content">
+                      <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <a href="{% url 'iqtisodiyot_page' %}" style="margin-left: 220px;"> Ko'proq ko'rsatish --></a>
+
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="block color-dark-blue">
+            <h3 class="utf_block_title"><span>Madaniyat san'at</span></h3>
+            {% for news in madaniyat %}
+            <div class="utf_post_overaly_style clearfix">
+              <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px" src="{{ news.image.url }}" alt="" /> </a> </div>
+              <div class="utf_post_content">
+                <h2 class="utf_post_title"> <a href="{{news.get_absolute_url}}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span> </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="utf_list_post_block" style="margin-bottom: 10px">
+              <ul class="utf_list_post">
+                {% for news in madaniyat_yangiliklar %}
+                <li class="clearfix">
+                  <div class="utf_post_block_style post-float clearfix">
+                    <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content">
+                      <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span> </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <a href="{% url 'madaniyat_page' %}" style="margin-left: 220px;"> Ko'proq ko'rsatish --></a>
+
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="block color-dark-blue">
+            <h3 class="utf_block_title"><span>Sport</span></h3>
+            {% for news in sport %}
+            <div class="utf_post_overaly_style clearfix">
+              <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 250px" src="{{news.image.url}}" alt="" /> </a> </div>
+              <div class="utf_post_content">
+                <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:7|safe}}</a> </h2>
+                <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span> </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="utf_list_post_block" style="margin-bottom: 10px">
+              <ul class="utf_list_post">
+                {% for news in sport_yangiliklar %}
+                <li class="clearfix">
+                  <div class="utf_post_block_style post-float clearfix">
+                    <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                    <div class="utf_post_content">
+                      <h2 class="utf_post_title title-small"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatewords_html:10|safe}}</a> </h2>
+                      <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date" style="margin: 0px; padding: 0px"><i class="fa fa-clock-o"></i> {{ news.create_time|date:"F d,Y" }}</span> </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <a href="{% url 'sport_page' %}" style="margin-left: 220px;"> Ko'proq ko'rsatish --></a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 2rd Block Wrapper End -->
+  
+  <!-- 3rd Block Wrapper Start -->
+  <section class="utf_block_wrapper p-bottom-0">
+    <div class="container" style="margin-top: -10px">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="utf_more_news block color-default">
+            <h3 class="utf_block_title"><span>Ko'p ko'rilgan</span></h3>
+            <div id="utf_more_news_slide" class="owl-carousel owl-theme utf_more_news_slide">
+
+              <div class="item">
+                {% for news in view_sort1 %}
+                <div class="utf_post_block_style utf_post_float_half clearfix">
+                  <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 200px; width: 400px" src="{{news.image.url}}" alt="" /> </a> </div>
+                  <a class="utf_post_cat" href="#!">{{news.category}}</a>
+                  <div class="utf_post_content">
+                    <h2 class="utf_post_title"> <a href="{{news.get_absolute_url}}">{{news.title|truncatechars_html:100}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> <span class="post-hits"><i class="fa fa-eye"></i>{% get_hit_count for news %}</span></div>
+                    <p>{{news.body|truncatechars_html:170|safe}}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="item">
+                {% for news in view_sort2 %}
+                <div class="utf_post_block_style utf_post_float_half clearfix">
+                  <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 200px; width: 400px" src="{{news.image.url}}" alt="" /> </a> </div>
+                  <a class="utf_post_cat" href="#!">{{news.category}}</a>
+                  <div class="utf_post_content">
+                    <h2 class="utf_post_title"> <a href="{{news.get_absolute_url}}">{{news.title|truncatechars_html:100}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> <span class="post-hits"><i class="fa fa-eye"></i>{% get_hit_count for news %}</span></div>
+                    <p>{{news.body|truncatechars_html:170|safe}}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="item">
+                {% for news in view_sort3 %}
+                <div class="utf_post_block_style utf_post_float_half clearfix">
+                  <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 200px; width: 400px" src="{{news.image.url}}" alt="" /> </a> </div>
+                  <a class="utf_post_cat" href="#!">{{news.category}}</a>
+                  <div class="utf_post_content">
+                    <h2 class="utf_post_title"> <a href="{{news.get_absolute_url}}">{{news.title|truncatechars_html:100}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> <span class="post-hits"><i class="fa fa-eye"></i>{% get_hit_count for news %}</span></div>
+                    <p>{{news.body|truncatechars_html:170|safe}}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="item">
+                {% for news in view_sort4 %}
+                <div class="utf_post_block_style utf_post_float_half clearfix">
+                  <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" style="height: 200px; width: 400px" src="{{news.image.url}}" alt="" /> </a> </div>
+                  <a class="utf_post_cat" href="#!">{{news.category}}</a>
+                  <div class="utf_post_content">
+                    <h2 class="utf_post_title"> <a href="{{news.get_absolute_url}}">{{news.title|truncatechars_html:100}}</a> </h2>
+                    <div class="utf_post_meta"> <span class="utf_post_author"><i class="fa fa-user"></i> <a href="#!">{{news.author}}</a></span> <span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span> <span class="post-hits"><i class="fa fa-eye"></i>{% get_hit_count for news %}</span></div>
+                    <p>{{news.body|truncatechars_html:170|safe}}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-12">
+          <div class="sidebar utf_sidebar_right">
+            <div class="widget color-default">
+              <h3 class="utf_block_title"><span>Ko'p izoh qoldirilgan</span></h3>
+              <div class="utf_list_post_block" style="margin-bottom: 10px">
+                <ul class="utf_list_post review-post-list">
+                  {% for news in articles %}
+                  <li class="clearfix">
+                    <div class="utf_post_block_style post-float clearfix">
+                      <div class="utf_post_thumb"> <a href="#!"> <img class="img-fluid" src="{{news.image.url}}" alt="" /> </a> </div>
+                      <div class="utf_post_content">
+                        <h2 class="utf_post_title"> <a href="{{ news.get_absolute_url }}">{{news.title|truncatechars:48}}</a> </h2>
+                        <div class="utf_post_meta">
+                          <div class="review-stars"><span class="utf_post_date"><i class="fa fa-clock-o"></i>{{ news.create_time|date:"F d,Y" }}</span><span class="post-comment"><i class="fa fa-comments-o"></i> <span>{{news.comment_count}}</span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+
+                </ul>
+              </div>
+              <a href="{% url 'izoh_page' %}" style="margin-left: 210px;"> Ko'proq ko'rsatish --></a>
+
+            </div>
+            
+            <div class="widget m-bottom-0" style="margin-top: -5px">
+              <h3 class="utf_block_title"><span>Newsletter</span></h3>
+              <div class="utf_newsletter_block">
+                <div class="utf_newsletter_introtext">
+				  <h4>Subscribe Newsletter!</h4>
+                  <p>Lorem ipsum dolor sit consectetur adipiscing elit Maecenas in pulvinar neque Nulla finibus lobortis pulvinar.</p>
+                </div>
+                <div class="utf_newsletter_form">
+                  <form action="#!" method="post">
+                    <div class="form-group">
+                      <input type="email" name="email" id="utf_newsletter_form-email" class="form-control form-control-lg" placeholder="E-Mail Address" autocomplete="off">
+                      <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+  <!-- 3rd Block Wrapper End -->
+  
+  <!-- Ad Content Area Start -->
+  <div class="utf_ad_content_area text-center utf_banner_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"> <img class="img-fluid" src="{% static 'images/banner-ads/ad-content-two.png' %}" alt="" /> </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ad Content Area End -->
+{% endblock content %}

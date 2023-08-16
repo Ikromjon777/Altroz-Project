@@ -1,0 +1,42 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} :: Altroz - News Magazine HTML Template :: {% endblock title %}
+
+{% block content %}
+  <!-- Page Title Start -->
+  <div class="page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li>Register</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page title end -->
+  
+  <!-- 1rd Block Wrapper Start -->
+  <section class="utf_block_wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mrb-40">
+      <h3>Ro'yxatdan o'tish</h3>
+            <form method="POST">{% csrf_token %}
+              {{ form|crispy }}
+              <div class="clearfix">
+                <button class="btn btn-primary" type="submit">Signup</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 1rd Block Wrapper End -->
+
+
+{% endblock content %}

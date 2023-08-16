@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # ckeditor matnlar bilan ishlaydi
+    'jazzmin',
     'ckeditor',
     'ckeditor_uploader',
     'hitcount',
